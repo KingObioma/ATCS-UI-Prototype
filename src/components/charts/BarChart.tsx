@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -40,6 +41,21 @@ export function BarChart({
   colorByBar = false,
   colors = ['#2979FF', '#00BCD4', '#00E676', '#FF9100', '#FF3D00', '#9C27B0'],
 }: BarChartProps) {
+  // Fix for Recharts SSR issue - only render on client
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div style={{ height }} className="flex items-center justify-center bg-gray-50 rounded-lg">
+        <div className="animate-pulse text-text-secondary">Loading chart...</div>
+      </div>
+    )
+  }
+
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsBarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>

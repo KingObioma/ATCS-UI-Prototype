@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import {
   LineChart as RechartsLineChart,
   Line,
@@ -28,6 +29,21 @@ interface LineChartProps {
 
 // Line chart component for trend visualization
 export function LineChart({ data, xKey, lines, height = 300 }: LineChartProps) {
+  // Fix for Recharts SSR issue - only render on client
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div style={{ height }} className="flex items-center justify-center bg-gray-50 rounded-lg">
+        <div className="animate-pulse text-text-secondary">Loading chart...</div>
+      </div>
+    )
+  }
+
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
