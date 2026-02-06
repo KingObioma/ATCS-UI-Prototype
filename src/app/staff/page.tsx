@@ -16,7 +16,7 @@ export default function StaffPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('All Departments')
   const [selectedStatus, setSelectedStatus] = useState('All Status')
-  const [selectedStatus] = useState('All Status')
+  const [] = useState('All Status')
 
   // Filter employees based on search and filters (UI only - shows all data)
   const filteredEmployees = employees
