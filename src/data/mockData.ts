@@ -1,20 +1,20 @@
 // Mock data for ATCS - Auto Task Control System
-// This file contains all hardcoded data used throughout the prototype
+// Enterprise workflow management platform
 
 // User authentication data
 export const users = {
   admin: {
     id: 'admin-001',
-    email: 'admin@atcs.com',
+    email: 'admin@atcs.io',
     password: 'admin123',
     name: 'John Administrator',
     role: 'admin',
-    department: 'Management',
+    department: 'Executive',
     avatar: null,
   },
   employee: {
     id: 'emp-001',
-    email: 'employee@atcs.com',
+    email: 'employee@atcs.io',
     password: 'employee123',
     name: 'Sarah Johnson',
     role: 'employee',
@@ -28,7 +28,7 @@ export const employees = [
   {
     id: 'emp-001',
     name: 'Sarah Johnson',
-    email: 'sarah.johnson@atcs.com',
+    email: 'sarah.johnson@atcs.io',
     department: 'Engineering',
     position: 'Senior Developer',
     status: 'active',
@@ -41,7 +41,7 @@ export const employees = [
   {
     id: 'emp-002',
     name: 'Michael Chen',
-    email: 'michael.chen@atcs.com',
+    email: 'michael.chen@atcs.io',
     department: 'Engineering',
     position: 'Full Stack Developer',
     status: 'active',
@@ -54,9 +54,9 @@ export const employees = [
   {
     id: 'emp-003',
     name: 'Emily Rodriguez',
-    email: 'emily.rodriguez@atcs.com',
+    email: 'emily.rodriguez@atcs.io',
     department: 'Design',
-    position: 'UI/UX Designer',
+    position: 'UI/UX Lead',
     status: 'active',
     performanceScore: 91,
     appraisalScore: 4.6,
@@ -67,9 +67,9 @@ export const employees = [
   {
     id: 'emp-004',
     name: 'David Kim',
-    email: 'david.kim@atcs.com',
+    email: 'david.kim@atcs.io',
     department: 'Marketing',
-    position: 'Marketing Manager',
+    position: 'Marketing Director',
     status: 'active',
     performanceScore: 85,
     appraisalScore: 4.2,
@@ -80,9 +80,9 @@ export const employees = [
   {
     id: 'emp-005',
     name: 'Lisa Thompson',
-    email: 'lisa.thompson@atcs.com',
-    department: 'HR',
-    position: 'HR Specialist',
+    email: 'lisa.thompson@atcs.io',
+    department: 'Human Resources',
+    position: 'HR Manager',
     status: 'active',
     performanceScore: 92,
     appraisalScore: 4.5,
@@ -93,9 +93,9 @@ export const employees = [
   {
     id: 'emp-006',
     name: 'James Wilson',
-    email: 'james.wilson@atcs.com',
+    email: 'james.wilson@atcs.io',
     department: 'Finance',
-    position: 'Financial Analyst',
+    position: 'Financial Controller',
     status: 'active',
     performanceScore: 87,
     appraisalScore: 4.3,
@@ -106,9 +106,9 @@ export const employees = [
   {
     id: 'emp-007',
     name: 'Amanda Foster',
-    email: 'amanda.foster@atcs.com',
+    email: 'amanda.foster@atcs.io',
     department: 'Engineering',
-    position: 'QA Engineer',
+    position: 'QA Lead',
     status: 'on-leave',
     performanceScore: 89,
     appraisalScore: 4.4,
@@ -119,9 +119,9 @@ export const employees = [
   {
     id: 'emp-008',
     name: 'Robert Martinez',
-    email: 'robert.martinez@atcs.com',
+    email: 'robert.martinez@atcs.io',
     department: 'Operations',
-    position: 'Operations Lead',
+    position: 'Operations Director',
     status: 'active',
     performanceScore: 90,
     appraisalScore: 4.5,
@@ -132,9 +132,9 @@ export const employees = [
   {
     id: 'emp-009',
     name: 'Jennifer Lee',
-    email: 'jennifer.lee@atcs.com',
+    email: 'jennifer.lee@atcs.io',
     department: 'Design',
-    position: 'Graphic Designer',
+    position: 'Product Designer',
     status: 'active',
     performanceScore: 86,
     appraisalScore: 4.2,
@@ -145,9 +145,9 @@ export const employees = [
   {
     id: 'emp-010',
     name: 'Christopher Brown',
-    email: 'christopher.brown@atcs.com',
+    email: 'christopher.brown@atcs.io',
     department: 'Engineering',
-    position: 'DevOps Engineer',
+    position: 'DevOps Lead',
     status: 'active',
     performanceScore: 93,
     appraisalScore: 4.6,
@@ -161,8 +161,8 @@ export const employees = [
 export const tasks = [
   {
     id: 'task-001',
-    title: 'Complete Q4 Financial Report',
-    description: 'Prepare and submit the quarterly financial analysis report',
+    title: 'Q4 Financial Analysis Report',
+    description: 'Prepare comprehensive quarterly financial analysis',
     assignedTo: 'emp-006',
     assignedToName: 'James Wilson',
     department: 'Finance',
@@ -176,11 +176,11 @@ export const tasks = [
   },
   {
     id: 'task-002',
-    title: 'Update Employee Onboarding Materials',
-    description: 'Review and update all onboarding documents and training materials',
+    title: 'Employee Onboarding Documentation',
+    description: 'Update all onboarding materials and training docs',
     assignedTo: 'emp-005',
     assignedToName: 'Lisa Thompson',
-    department: 'HR',
+    department: 'Human Resources',
     status: 'pending',
     priority: 'medium',
     deadline: '2024-12-20',
@@ -191,8 +191,8 @@ export const tasks = [
   },
   {
     id: 'task-003',
-    title: 'Deploy Production Release v2.5.0',
-    description: 'Deploy the latest version to production environment with zero downtime',
+    title: 'Production Release v2.5.0',
+    description: 'Deploy latest version with zero downtime',
     assignedTo: 'emp-010',
     assignedToName: 'Christopher Brown',
     department: 'Engineering',
@@ -206,8 +206,8 @@ export const tasks = [
   },
   {
     id: 'task-004',
-    title: 'Design New Landing Page Mockups',
-    description: 'Create wireframes and high-fidelity mockups for the new marketing landing page',
+    title: 'Marketing Landing Page Design',
+    description: 'Create wireframes and mockups for new campaign',
     assignedTo: 'emp-003',
     assignedToName: 'Emily Rodriguez',
     department: 'Design',
@@ -221,8 +221,8 @@ export const tasks = [
   },
   {
     id: 'task-005',
-    title: 'Marketing Campaign Analysis',
-    description: 'Analyze Q3 marketing campaign performance and prepare recommendations',
+    title: 'Campaign Performance Analysis',
+    description: 'Analyze Q3 marketing campaign performance metrics',
     assignedTo: 'emp-004',
     assignedToName: 'David Kim',
     department: 'Marketing',
@@ -237,7 +237,7 @@ export const tasks = [
   {
     id: 'task-006',
     title: 'API Integration Testing',
-    description: 'Complete integration testing for the new payment gateway API',
+    description: 'Complete integration testing for payment gateway',
     assignedTo: 'emp-002',
     assignedToName: 'Michael Chen',
     department: 'Engineering',
@@ -252,10 +252,10 @@ export const tasks = [
   {
     id: 'task-007',
     title: 'Quarterly Performance Reviews',
-    description: 'Conduct and document performance reviews for all team members',
+    description: 'Conduct and document Q4 performance reviews',
     assignedTo: 'emp-005',
     assignedToName: 'Lisa Thompson',
-    department: 'HR',
+    department: 'Human Resources',
     status: 'completed',
     priority: 'medium',
     deadline: '2024-12-12',
@@ -266,8 +266,8 @@ export const tasks = [
   },
   {
     id: 'task-008',
-    title: 'User Authentication Refactor',
-    description: 'Refactor the authentication module to implement OAuth 2.0',
+    title: 'Authentication System Refactor',
+    description: 'Implement OAuth 2.0 authentication module',
     assignedTo: 'emp-001',
     assignedToName: 'Sarah Johnson',
     department: 'Engineering',
@@ -282,7 +282,7 @@ export const tasks = [
   {
     id: 'task-009',
     title: 'Brand Guidelines Update',
-    description: 'Update brand guidelines document with new color palette and typography',
+    description: 'Update brand guidelines with new color palette',
     assignedTo: 'emp-009',
     assignedToName: 'Jennifer Lee',
     department: 'Design',
@@ -296,8 +296,8 @@ export const tasks = [
   },
   {
     id: 'task-010',
-    title: 'Server Infrastructure Audit',
-    description: 'Conduct security audit and performance review of server infrastructure',
+    title: 'Infrastructure Security Audit',
+    description: 'Conduct security audit and performance review',
     assignedTo: 'emp-008',
     assignedToName: 'Robert Martinez',
     department: 'Operations',
@@ -307,7 +307,7 @@ export const tasks = [
     createdAt: '2024-11-20',
     completedAt: '2024-12-06',
     proofUploaded: true,
-    proofFile: 'infrastructure_audit_report.pdf',
+    proofFile: 'security_audit_report.pdf',
   },
 ]
 
@@ -346,9 +346,9 @@ export const departmentPerformance = [
 
 // Chart data - Task status distribution
 export const taskStatusDistribution = [
-  { name: 'Completed', value: 156, color: '#00E676' },
-  { name: 'Pending', value: 42, color: '#FF9100' },
-  { name: 'Overdue', value: 8, color: '#FF3D00' },
+  { name: 'Completed', value: 156, color: '#0F0E47' },
+  { name: 'Pending', value: 42, color: '#505081' },
+  { name: 'Overdue', value: 8, color: '#8686AC' },
 ]
 
 // Chart data - KPI completion by department
@@ -376,7 +376,7 @@ export const departments = [
   'Engineering',
   'Design',
   'Marketing',
-  'HR',
+  'Human Resources',
   'Finance',
   'Operations',
 ]
@@ -385,36 +385,45 @@ export const departments = [
 export const statusOptions = ['All Status', 'Active', 'On Leave', 'Inactive']
 export const taskStatusOptions = ['All Status', 'Completed', 'Pending', 'Overdue']
 
-// Recent activities for dashboard
-export const recentActivities = [
-  {
-    id: 1,
-    type: 'task_completed',
-    message: 'Sarah Johnson completed "User Authentication Refactor"',
-    timestamp: '2024-12-14T10:30:00Z',
-  },
-  {
-    id: 2,
-    type: 'task_assigned',
-    message: 'New task assigned to Michael Chen: "API Integration Testing"',
-    timestamp: '2024-12-14T09:15:00Z',
-  },
-  {
-    id: 3,
-    type: 'proof_uploaded',
-    message: 'Christopher Brown uploaded proof for "Deploy Production Release v2.5.0"',
-    timestamp: '2024-12-13T16:45:00Z',
-  },
-  {
-    id: 4,
-    type: 'review_completed',
-    message: 'Lisa Thompson completed Q4 performance reviews',
-    timestamp: '2024-12-13T14:20:00Z',
-  },
-  {
-    id: 5,
-    type: 'task_overdue',
-    message: 'Task "Brand Guidelines Update" is now overdue',
-    timestamp: '2024-12-13T00:00:00Z',
-  },
-]
+// Company info for public pages
+export const companyInfo = {
+  name: 'ATCS',
+  fullName: 'Auto Task Control System',
+  tagline: 'Enterprise Workflow Management Platform',
+  description: 'Automated job control, staff appraisal, KPI tracking, reporting, real-time monitoring, file uploads, admin oversight, performance analysis, and historical records.',
+  email: 'contact@atcs.io',
+  phone: '+1 (555) 000-1234',
+  address: '100 Enterprise Drive, Suite 500, San Francisco, CA 94105',
+  features: [
+    {
+      title: 'Automated Job Control',
+      description: 'Streamline task assignment and tracking with intelligent automation',
+      icon: 'tasks',
+    },
+    {
+      title: 'Staff Appraisal',
+      description: 'Comprehensive performance reviews and feedback systems',
+      icon: 'users',
+    },
+    {
+      title: 'KPI Tracking',
+      description: 'Real-time key performance indicator monitoring and analytics',
+      icon: 'chart',
+    },
+    {
+      title: 'Advanced Reporting',
+      description: 'Generate detailed reports with actionable insights',
+      icon: 'report',
+    },
+    {
+      title: 'Real-time Monitoring',
+      description: 'Live dashboards and instant notifications',
+      icon: 'monitor',
+    },
+    {
+      title: 'Admin Oversight',
+      description: 'Complete visibility and control over all operations',
+      icon: 'admin',
+    },
+  ],
+}

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 
-// Navigation items configuration
 const navItems = [
   {
     name: 'Dashboard',
@@ -58,7 +57,7 @@ interface SidebarProps {
   onClose: () => void
 }
 
-// Sidebar navigation component
+// Sidebar navigation for app pages
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
 
@@ -75,24 +74,23 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed top-0 left-0 z-50 h-full w-64 bg-surface shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:z-0',
+          'fixed top-0 left-0 z-50 h-full w-64 bg-white dark:bg-dark-surface border-r border-brand-muted/10 dark:border-brand-accent/20 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:z-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between h-16 px-6 border-b border-gray-100">
+        <div className="flex items-center justify-between h-16 px-6 border-b border-brand-muted/10 dark:border-brand-accent/20">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">AT</span>
+            <div className="w-10 h-10 gradient-brand rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">AT</span>
             </div>
-            <span className="font-bold text-lg text-text-primary">ATCS</span>
+            <span className="font-bold text-xl text-brand-primary dark:text-white">ATCS</span>
           </Link>
-          {/* Mobile close button */}
           <button
             onClick={onClose}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
+            className="lg:hidden p-2 hover:bg-brand-muted/10 dark:hover:bg-brand-accent/20 rounded-lg"
           >
-            <svg className="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -108,10 +106,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                 href={item.href}
                 onClick={onClose}
                 className={cn(
-                  'flex items-center gap-3 px-4 py-3 rounded-lg transition-colors',
+                  'flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200',
                   isActive
-                    ? 'bg-primary text-white'
-                    : 'text-text-secondary hover:bg-gray-100 hover:text-text-primary'
+                    ? 'bg-brand-secondary text-white dark:bg-brand-accent'
+                    : 'text-brand-muted hover:bg-brand-muted/10 dark:hover:bg-brand-accent/20 hover:text-brand-secondary dark:hover:text-white'
                 )}
               >
                 {item.icon}
@@ -122,10 +120,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </nav>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-brand-muted/10 dark:border-brand-accent/20">
           <Link
             href="/"
-            className="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-gray-100 hover:text-text-primary rounded-lg transition-colors"
+            className="flex items-center gap-3 px-4 py-3 text-brand-muted hover:bg-brand-muted/10 dark:hover:bg-brand-accent/20 hover:text-brand-secondary dark:hover:text-white rounded-xl transition-all duration-200"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Import Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Base styles */
 html {
@@ -16,7 +16,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Light mode defaults */
+:root {
+  --bg-primary: #F5F5F5;
+  --bg-surface: #FFFFFF;
+  --text-primary: #212121;
+  --text-secondary: #616161;
+}
+
+/* Dark mode */
+.dark {
+  --bg-primary: #0A0A1F;
+  --bg-surface: #12122B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #8686AC;
+}
+
+/* Custom scrollbar - Light */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -27,18 +43,35 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #BDBDBD;
+  background: #8686AC;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9E9E9E;
+  background: #505081;
+}
+
+/* Custom scrollbar - Dark */
+.dark ::-webkit-scrollbar-track {
+  background: #12122B;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #505081;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #8686AC;
 }
 
 /* Focus visible outline */
 *:focus-visible {
-  outline: 2px solid #2979FF;
+  outline: 2px solid #272757;
   outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+  outline-color: #505081;
 }
 
 /* Remove default button styles */
@@ -46,13 +79,7 @@ button {
   cursor: pointer;
 }
 
-/* Table responsive wrapper */
-.table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Animation utilities */
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -68,18 +95,37 @@ button {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
-/* Skeleton loading */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
-  100% {
-    background-position: 200% 0;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-.skeleton {
-  background: linear-gradient(90deg, #F5F5F5 25%, #E0E0E0 50%, #F5F5F5 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Gradient backgrounds */
+.gradient-brand {
+  background: linear-gradient(135deg, #0F0E47 0%, #272757 50%, #505081 100%);
+}
+
+.gradient-brand-light {
+  background: linear-gradient(135deg, #272757 0%, #505081 100%);
+}
+
+/* Glass effect */
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Transition utilities */
+.transition-theme {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

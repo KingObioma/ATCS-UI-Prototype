@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts'
+import { useTheme } from '@/context/ThemeContext'
 
 interface DataPoint {
   [key: string]: string | number
@@ -31,7 +32,7 @@ interface BarChartProps {
   colors?: string[]
 }
 
-// Bar chart component for comparison visualization
+// Bar chart with brand colors and dark mode support
 export function BarChart({
   data,
   xKey,
@@ -39,10 +40,10 @@ export function BarChart({
   height = 300,
   showLegend = true,
   colorByBar = false,
-  colors = ['#2979FF', '#00BCD4', '#00E676', '#FF9100', '#FF3D00', '#9C27B0'],
+  colors = ['#0F0E47', '#272757', '#505081', '#8686AC'],
 }: BarChartProps) {
-  // Fix for Recharts SSR issue - only render on client
   const [mounted, setMounted] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -50,36 +51,39 @@ export function BarChart({
 
   if (!mounted) {
     return (
-      <div style={{ height }} className="flex items-center justify-center bg-gray-50 rounded-lg">
-        <div className="animate-pulse text-text-secondary">Loading chart...</div>
+      <div style={{ height }} className="flex items-center justify-center bg-brand-muted/5 dark:bg-brand-accent/10 rounded-lg">
+        <div className="animate-pulse text-brand-muted">Loading chart...</div>
       </div>
     )
   }
 
+  const gridColor = theme === 'dark' ? '#505081' : '#E5E7EB'
+  const textColor = theme === 'dark' ? '#8686AC' : '#616161'
+
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsBarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke={gridColor} opacity={0.3} vertical={false} />
         <XAxis
           dataKey={xKey}
-          tick={{ fill: '#616161', fontSize: 12 }}
-          tickLine={{ stroke: '#E5E7EB' }}
-          axisLine={{ stroke: '#E5E7EB' }}
+          tick={{ fill: textColor, fontSize: 12 }}
+          tickLine={{ stroke: gridColor }}
+          axisLine={{ stroke: gridColor }}
         />
         <YAxis
-          tick={{ fill: '#616161', fontSize: 12 }}
-          tickLine={{ stroke: '#E5E7EB' }}
-          axisLine={{ stroke: '#E5E7EB' }}
+          tick={{ fill: textColor, fontSize: 12 }}
+          tickLine={{ stroke: gridColor }}
+          axisLine={{ stroke: gridColor }}
         />
         <Tooltip
           contentStyle={{
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E5E7EB',
+            backgroundColor: theme === 'dark' ? '#1A1A3E' : '#FFFFFF',
+            border: `1px solid ${theme === 'dark' ? '#505081' : '#E5E7EB'}`,
             borderRadius: '8px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
           }}
-          labelStyle={{ color: '#212121', fontWeight: 600 }}
-          cursor={{ fill: 'rgba(41, 121, 255, 0.1)' }}
+          labelStyle={{ color: theme === 'dark' ? '#FFFFFF' : '#0F0E47', fontWeight: 600 }}
+          cursor={{ fill: theme === 'dark' ? 'rgba(80, 80, 129, 0.2)' : 'rgba(15, 14, 71, 0.05)' }}
         />
         {showLegend && (
           <Legend

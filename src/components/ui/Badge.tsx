@@ -12,26 +12,24 @@ interface BadgeProps {
   className?: string
 }
 
-// Status badge component for displaying task/employee status
+// Status badge component with dark mode support
 export function Badge({
   variant = 'default',
   size = 'md',
   children,
   className,
 }: BadgeProps) {
-  // Variant-specific styles
   const variantStyles: Record<BadgeVariant, string> = {
-    default: 'bg-gray-100 text-text-secondary',
-    success: 'bg-success/10 text-success-dark',
-    warning: 'bg-warning/10 text-warning-dark',
-    error: 'bg-error/10 text-error-dark',
-    info: 'bg-primary/10 text-primary',
+    default: 'bg-brand-muted/20 text-brand-secondary dark:bg-brand-muted/30 dark:text-brand-muted',
+    success: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+    warning: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    error: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+    info: 'bg-brand-accent/20 text-brand-primary dark:bg-brand-accent/30 dark:text-brand-accent',
   }
 
-  // Size-specific styles
   const sizeStyles: Record<BadgeSize, string> = {
     sm: 'px-2 py-0.5 text-xs',
-    md: 'px-2.5 py-1 text-sm',
+    md: 'px-3 py-1 text-sm',
   }
 
   return (
@@ -56,15 +54,15 @@ interface DotBadgeProps {
 
 export function DotBadge({ status, label }: DotBadgeProps) {
   const dotColors = {
-    active: 'bg-success',
-    inactive: 'bg-error',
-    pending: 'bg-warning',
+    active: 'bg-green-500',
+    inactive: 'bg-red-500',
+    pending: 'bg-amber-500',
   }
 
   return (
     <span className="inline-flex items-center gap-1.5">
       <span className={cn('w-2 h-2 rounded-full', dotColors[status])} />
-      <span className="text-sm text-text-primary capitalize">{label}</span>
+      <span className="text-sm text-brand-primary dark:text-white capitalize">{label}</span>
     </span>
   )
 }

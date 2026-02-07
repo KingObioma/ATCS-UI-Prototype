@@ -2,7 +2,6 @@
 
 import { cn } from '@/lib/utils'
 
-// Button variants for different use cases
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
@@ -13,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
 }
 
-// Reusable Button component with multiple variants
+// Reusable Button component with brand colors and dark mode support
 export function Button({
   variant = 'primary',
   size = 'md',
@@ -23,23 +22,20 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  // Base styles for all buttons
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
 
-  // Variant-specific styles
   const variantStyles: Record<ButtonVariant, string> = {
-    primary: 'bg-primary text-white hover:bg-primary-600 focus:ring-primary-400',
-    secondary: 'bg-secondary text-white hover:bg-secondary-600 focus:ring-secondary-400',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary-400',
-    ghost: 'text-text-primary hover:bg-gray-100 focus:ring-gray-400',
-    danger: 'bg-error text-white hover:bg-error-dark focus:ring-error',
+    primary: 'bg-brand-secondary text-white hover:bg-brand-primary focus:ring-brand-accent dark:bg-brand-accent dark:hover:bg-brand-secondary',
+    secondary: 'bg-brand-accent text-white hover:bg-brand-secondary focus:ring-brand-muted dark:bg-brand-muted dark:hover:bg-brand-accent',
+    outline: 'border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white focus:ring-brand-accent dark:border-brand-accent dark:text-brand-accent dark:hover:bg-brand-accent dark:hover:text-white',
+    ghost: 'text-brand-secondary hover:bg-brand-secondary/10 focus:ring-brand-accent dark:text-brand-muted dark:hover:bg-brand-accent/20',
+    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
   }
 
-  // Size-specific styles
   const sizeStyles: Record<ButtonSize, string> = {
     sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-sm',
-    lg: 'px-6 py-3 text-base',
+    md: 'px-5 py-2.5 text-sm',
+    lg: 'px-8 py-3 text-base',
   }
 
   return (

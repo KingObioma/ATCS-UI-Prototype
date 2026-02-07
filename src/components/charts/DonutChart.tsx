@@ -9,6 +9,7 @@ import {
   Legend,
   Tooltip,
 } from 'recharts'
+import { useTheme } from '@/context/ThemeContext'
 
 interface DataPoint {
   name: string
@@ -24,7 +25,7 @@ interface DonutChartProps {
   showLegend?: boolean
 }
 
-// Donut chart component for distribution visualization
+// Donut chart with brand colors and dark mode support
 export function DonutChart({
   data,
   height = 300,
@@ -32,20 +33,19 @@ export function DonutChart({
   outerRadius = 100,
   showLegend = true,
 }: DonutChartProps) {
-  // Fix for Recharts SSR issue - only render on client
   const [mounted, setMounted] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Calculate total for center label
   const total = data.reduce((sum, item) => sum + item.value, 0)
 
   if (!mounted) {
     return (
-      <div style={{ height }} className="flex items-center justify-center bg-gray-50 rounded-lg">
-        <div className="animate-pulse text-text-secondary">Loading chart...</div>
+      <div style={{ height }} className="flex items-center justify-center bg-brand-muted/5 dark:bg-brand-accent/10 rounded-lg">
+        <div className="animate-pulse text-brand-muted">Loading chart...</div>
       </div>
     )
   }
@@ -69,10 +69,10 @@ export function DonutChart({
         </Pie>
         <Tooltip
           contentStyle={{
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E5E7EB',
+            backgroundColor: theme === 'dark' ? '#1A1A3E' : '#FFFFFF',
+            border: `1px solid ${theme === 'dark' ? '#505081' : '#E5E7EB'}`,
             borderRadius: '8px',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
           }}
           formatter={(value: number, name: string) => [
             `${value} (${((value / total) * 100).toFixed(1)}%)`,
@@ -87,18 +87,21 @@ export function DonutChart({
             iconType="circle"
             iconSize={10}
             formatter={(value) => (
-              <span style={{ color: '#616161', fontSize: '12px' }}>{value}</span>
+              <span style={{ color: theme === 'dark' ? '#8686AC' : '#616161', fontSize: '12px' }}>{value}</span>
             )}
           />
         )}
-        {/* Center text showing total */}
+        {/* Center text */}
         <text
           x="50%"
           y="45%"
           textAnchor="middle"
           dominantBaseline="middle"
-          className="fill-text-primary"
-          style={{ fontSize: '24px', fontWeight: 'bold' }}
+          style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            fill: theme === 'dark' ? '#FFFFFF' : '#0F0E47'
+          }}
         >
           {total}
         </text>
@@ -107,8 +110,10 @@ export function DonutChart({
           y="55%"
           textAnchor="middle"
           dominantBaseline="middle"
-          className="fill-text-secondary"
-          style={{ fontSize: '12px' }}
+          style={{
+            fontSize: '12px',
+            fill: theme === 'dark' ? '#8686AC' : '#616161'
+          }}
         >
           Total
         </text>

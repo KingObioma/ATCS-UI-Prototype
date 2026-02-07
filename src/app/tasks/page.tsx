@@ -11,148 +11,112 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
 import { tasks, departments, taskStatusOptions, employees } from '@/data/mockData'
 import { formatDate, getStatusBadgeVariant } from '@/lib/utils'
 
-// Tasks/Workflow Page - View and manage all tasks
+// Tasks Page - Workflow management
 export default function TasksPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState('All Departments')
   const [selectedStatus, setSelectedStatus] = useState('All Status')
 
-  // Get employee names for filter
   const employeeNames = ['All Employees', ...employees.map((e) => e.name)]
 
-  // Priority badge color
-  const getPriorityColor = (priority: string) => {
+  const getPriorityVariant = (priority: string) => {
     switch (priority) {
-      case 'high':
-        return 'error'
-      case 'medium':
-        return 'warning'
-      case 'low':
-        return 'info'
-      default:
-        return 'default'
+      case 'high': return 'error'
+      case 'medium': return 'warning'
+      case 'low': return 'info'
+      default: return 'default'
     }
   }
 
   return (
     <DashboardLayout>
       {/* Page header */}
-      <div className="mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold text-text-primary">Task Management</h1>
-            <p className="text-text-secondary mt-1">
-              Track and manage all workflow tasks across departments
-            </p>
-          </div>
-          <Button variant="primary">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            Create Task
-          </Button>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-brand-primary dark:text-white">Task Management</h1>
+          <p className="text-brand-muted mt-1">Track and manage workflow tasks</p>
         </div>
+        <Button>
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          Create Task
+        </Button>
       </div>
 
-      {/* Stats summary */}
+      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <div className="bg-surface rounded-xl p-4 shadow-card">
+        <div className="bg-white dark:bg-dark-card rounded-xl p-4 border border-brand-muted/10 dark:border-brand-accent/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 bg-brand-primary/10 dark:bg-brand-primary/20 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-brand-primary dark:text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-text-secondary">Total Tasks</p>
-              <p className="text-xl font-bold text-text-primary">{tasks.length}</p>
+              <p className="text-sm text-brand-muted">Total Tasks</p>
+              <p className="text-xl font-bold text-brand-primary dark:text-white">{tasks.length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-surface rounded-xl p-4 shadow-card">
+        <div className="bg-white dark:bg-dark-card rounded-xl p-4 border border-brand-muted/10 dark:border-brand-accent/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-text-secondary">Completed</p>
-              <p className="text-xl font-bold text-success">
-                {tasks.filter((t) => t.status === 'completed').length}
-              </p>
+              <p className="text-sm text-brand-muted">Completed</p>
+              <p className="text-xl font-bold text-green-600 dark:text-green-400">{tasks.filter((t) => t.status === 'completed').length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-surface rounded-xl p-4 shadow-card">
+        <div className="bg-white dark:bg-dark-card rounded-xl p-4 border border-brand-muted/10 dark:border-brand-accent/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-warning/10 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 bg-amber-100 dark:bg-amber-900/30 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-text-secondary">Pending</p>
-              <p className="text-xl font-bold text-warning">
-                {tasks.filter((t) => t.status === 'pending').length}
-              </p>
+              <p className="text-sm text-brand-muted">Pending</p>
+              <p className="text-xl font-bold text-amber-600 dark:text-amber-400">{tasks.filter((t) => t.status === 'pending').length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-surface rounded-xl p-4 shadow-card">
+        <div className="bg-white dark:bg-dark-card rounded-xl p-4 border border-brand-muted/10 dark:border-brand-accent/20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-error/10 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center">
+              <svg className="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-text-secondary">Overdue</p>
-              <p className="text-xl font-bold text-error">
-                {tasks.filter((t) => t.status === 'overdue').length}
-              </p>
+              <p className="text-sm text-brand-muted">Overdue</p>
+              <p className="text-xl font-bold text-red-600 dark:text-red-400">{tasks.filter((t) => t.status === 'overdue').length}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filters section */}
+      {/* Filters */}
       <Card className="mb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search input */}
-          <Input
-            placeholder="Search tasks..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          {/* Department filter */}
-          <Select
-            options={departments}
-            value={selectedDepartment}
-            onChange={(e) => setSelectedDepartment(e.target.value)}
-          />
-          {/* Status filter */}
-          <Select
-            options={taskStatusOptions}
-            value={selectedStatus}
-            onChange={(e) => setSelectedStatus(e.target.value)}
-          />
-          {/* Employee filter */}
-          <Select
-            options={employeeNames}
-            placeholder="Filter by employee"
-          />
+          <Input placeholder="Search tasks..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+          <Select options={departments} value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)} />
+          <Select options={taskStatusOptions} value={selectedStatus} onChange={(e) => setSelectedStatus(e.target.value)} />
+          <Select options={employeeNames} placeholder="Filter by employee" />
         </div>
       </Card>
 
-      {/* Tasks table */}
+      {/* Table */}
       <Card>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Task</TableHead>
               <TableHead>Assigned To</TableHead>
-              <TableHead>Department</TableHead>
               <TableHead>Priority</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Deadline</TableHead>
@@ -165,16 +129,13 @@ export default function TasksPage() {
               <TableRow key={task.id}>
                 <TableCell>
                   <div className="max-w-[200px]">
-                    <p className="font-medium text-text-primary truncate">{task.title}</p>
-                    <p className="text-xs text-text-secondary truncate">{task.description}</p>
+                    <p className="font-medium truncate">{task.title}</p>
+                    <p className="text-xs text-brand-muted truncate">{task.department}</p>
                   </div>
                 </TableCell>
+                <TableCell>{task.assignedToName}</TableCell>
                 <TableCell>
-                  <span className="font-medium">{task.assignedToName}</span>
-                </TableCell>
-                <TableCell>{task.department}</TableCell>
-                <TableCell>
-                  <Badge variant={getPriorityColor(task.priority)} size="sm">
+                  <Badge variant={getPriorityVariant(task.priority)} size="sm">
                     {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
                   </Badge>
                 </TableCell>
@@ -184,17 +145,17 @@ export default function TasksPage() {
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <span className={task.status === 'overdue' ? 'text-error font-medium' : ''}>
+                  <span className={task.status === 'overdue' ? 'text-red-600 dark:text-red-400 font-medium' : ''}>
                     {formatDate(task.deadline)}
                   </span>
                 </TableCell>
                 <TableCell>
                   {task.proofUploaded ? (
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-1">
+                      <svg className="w-4 h-4 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <span className="text-xs text-success">Uploaded</span>
+                      <span className="text-xs text-green-600 dark:text-green-400">Uploaded</span>
                     </div>
                   ) : (
                     <Button variant="outline" size="sm">
@@ -218,11 +179,6 @@ export default function TasksPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                       </svg>
                     </Button>
-                    <Button variant="ghost" size="sm">
-                      <svg className="w-4 h-4 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                      </svg>
-                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -230,21 +186,12 @@ export default function TasksPage() {
           </TableBody>
         </Table>
 
-        {/* Pagination */}
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-          <p className="text-sm text-text-secondary">
-            Showing {tasks.length} tasks
-          </p>
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-brand-muted/10 dark:border-brand-accent/20">
+          <p className="text-sm text-brand-muted">Showing {tasks.length} tasks</p>
           <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" disabled>
-              Previous
-            </Button>
-            <Button variant="primary" size="sm">
-              1
-            </Button>
-            <Button variant="outline" size="sm">
-              Next
-            </Button>
+            <Button variant="outline" size="sm" disabled>Previous</Button>
+            <Button variant="primary" size="sm">1</Button>
+            <Button variant="outline" size="sm">Next</Button>
           </div>
         </div>
       </Card>

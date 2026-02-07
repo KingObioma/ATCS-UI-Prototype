@@ -8,12 +8,12 @@ interface DashboardLayoutProps {
   children: React.ReactNode
 }
 
-// Main layout wrapper for authenticated pages
+// Main layout wrapper for app pages (after login)
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-200">
       {/* Sidebar navigation */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
