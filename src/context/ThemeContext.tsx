@@ -24,6 +24,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setTheme('dark')
     }
+
+      if (savedTheme) {
+      setTheme(savedTheme)
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark')
+    }
+
+    
   }, [])
 
   // Apply theme class to document
