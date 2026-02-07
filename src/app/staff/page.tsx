@@ -24,7 +24,7 @@ export default function StaffPage() {
         <div>
           <h1 className="text-2xl font-bold text-brand-primary dark:text-white">Staff Management</h1>
           <p className="text-brand-muted mt-1">View and manage all employees</p>
-          <p className="text-brand-muted mt-1">manage all employees</p>
+          <p className="text-brand-muted mt-1">employees</p>
         </div>
         <Button>
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
