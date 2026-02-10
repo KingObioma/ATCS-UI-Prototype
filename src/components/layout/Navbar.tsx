@@ -121,61 +121,75 @@ export function Navbar({ onMenuClick, userName = 'John Administrator' }: NavbarP
 
             {/* Notifications Panel */}
             {showNotifications && (
-              <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 bg-white dark:bg-dark-card rounded-2xl shadow-2xl border border-brand-muted/10 dark:border-brand-accent/20 overflow-hidden z-50">
-                {/* Header */}
-                <div className="flex items-center justify-between px-5 py-4 border-b border-brand-muted/10 dark:border-brand-accent/20">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-sm font-semibold text-brand-primary dark:text-white">Notifications</h3>
-                    {unreadCount > 0 && (
-                      <span className="px-2 py-0.5 text-[11px] font-semibold bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-full">
-                        {unreadCount} new
-                      </span>
-                    )}
+              <>
+                {/* Mobile: full-width overlay */}
+                <div className="sm:hidden fixed inset-0 top-16 z-50 bg-black/30" onClick={() => setShowNotifications(false)} />
+                <div className="fixed left-2 right-2 top-[4.5rem] sm:left-auto sm:right-auto sm:top-auto sm:absolute sm:right-0 sm:top-full sm:mt-2 sm:w-96 bg-white dark:bg-dark-card rounded-2xl shadow-2xl border border-brand-muted/10 dark:border-brand-accent/20 overflow-hidden z-50">
+                  {/* Header */}
+                  <div className="flex items-center justify-between px-4 sm:px-5 py-4 border-b border-brand-muted/10 dark:border-brand-accent/20">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-sm font-semibold text-brand-primary dark:text-white">Notifications</h3>
+                      {unreadCount > 0 && (
+                        <span className="px-2 py-0.5 text-[11px] font-semibold bg-red-100 dark:bg-red-500/20 text-red-600 dark:text-red-400 rounded-full">
+                          {unreadCount} new
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {unreadCount > 0 && (
+                        <button
+                          onClick={markAllRead}
+                          className="text-xs font-medium text-brand-accent dark:text-brand-muted hover:text-brand-primary dark:hover:text-white transition-colors"
+                        >
+                          Mark all read
+                        </button>
+                      )}
+                      <button
+                        onClick={() => setShowNotifications(false)}
+                        className="sm:hidden p-1 hover:bg-brand-muted/10 dark:hover:bg-brand-accent/20 rounded-lg"
+                      >
+                        <svg className="w-4 h-4 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
-                  {unreadCount > 0 && (
-                    <button
-                      onClick={markAllRead}
-                      className="text-xs font-medium text-brand-accent dark:text-brand-muted hover:text-brand-primary dark:hover:text-white transition-colors"
-                    >
-                      Mark all read
-                    </button>
-                  )}
-                </div>
 
-                {/* Notification list */}
-                <div className="max-h-[360px] overflow-y-auto">
-                  {notifications.map((notif) => (
-                    <button
-                      key={notif.id}
-                      onClick={() => markAsRead(notif.id)}
-                      className={`w-full flex items-start gap-3 px-5 py-3.5 text-left transition-colors hover:bg-brand-muted/5 dark:hover:bg-brand-accent/10 ${
-                        !notif.read ? 'bg-brand-accent/[0.03] dark:bg-brand-accent/[0.06]' : ''
-                      }`}
-                    >
-                      {typeIcon(notif.type)}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <p className={`text-sm font-medium truncate ${!notif.read ? 'text-brand-primary dark:text-white' : 'text-brand-muted'}`}>
-                            {notif.title}
-                          </p>
-                          {!notif.read && (
-                            <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
-                          )}
+                  {/* Notification list */}
+                  <div className="max-h-[60vh] sm:max-h-[360px] overflow-y-auto">
+                    {notifications.map((notif) => (
+                      <button
+                        key={notif.id}
+                        onClick={() => markAsRead(notif.id)}
+                        className={`w-full flex items-start gap-3 px-4 sm:px-5 py-3.5 text-left transition-colors hover:bg-brand-muted/5 dark:hover:bg-brand-accent/10 ${
+                          !notif.read ? 'bg-brand-accent/[0.03] dark:bg-brand-accent/[0.06]' : ''
+                        }`}
+                      >
+                        {typeIcon(notif.type)}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <p className={`text-sm font-medium truncate ${!notif.read ? 'text-brand-primary dark:text-white' : 'text-brand-muted'}`}>
+                              {notif.title}
+                            </p>
+                            {!notif.read && (
+                              <span className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                            )}
+                          </div>
+                          <p className="text-xs text-brand-muted mt-0.5 line-clamp-2">{notif.message}</p>
+                          <p className="text-[11px] text-brand-muted/70 mt-1">{notif.time}</p>
                         </div>
-                        <p className="text-xs text-brand-muted mt-0.5 truncate">{notif.message}</p>
-                        <p className="text-[11px] text-brand-muted/70 mt-1">{notif.time}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
+                      </button>
+                    ))}
+                  </div>
 
-                {/* Footer */}
-                <div className="border-t border-brand-muted/10 dark:border-brand-accent/20 px-5 py-3">
-                  <button className="w-full text-xs font-medium text-center text-brand-accent dark:text-brand-muted hover:text-brand-primary dark:hover:text-white transition-colors">
-                    View all notifications
-                  </button>
+                  {/* Footer */}
+                  <div className="border-t border-brand-muted/10 dark:border-brand-accent/20 px-4 sm:px-5 py-3">
+                    <button className="w-full text-xs font-medium text-center text-brand-accent dark:text-brand-muted hover:text-brand-primary dark:hover:text-white transition-colors">
+                      View all notifications
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
 
