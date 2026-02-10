@@ -12,10 +12,10 @@ export default function RegisterPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: 'John Doe',
+    email: 'john@atcs.io',
+    password: 'admin123',
+    confirmPassword: 'admin123',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
