@@ -54,18 +54,42 @@ export default function HomePage() {
               </div>
               <div className="p-6 lg:p-8">
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                  {[
-                    { label: 'Tasks Completed', value: '156', color: 'bg-brand-primary' },
-                    { label: 'Tasks Pending', value: '42', color: 'bg-brand-secondary' },
-                    { label: 'Performance', value: '89.5%', color: 'bg-brand-accent' },
-                    { label: 'Team Members', value: '24', color: 'bg-brand-muted' },
-                  ].map((stat, i) => (
-                    <div key={i} className="bg-light-bg dark:bg-dark-surface rounded-xl p-4">
-                      <div className={`w-10 h-10 ${stat.color} rounded-lg mb-3 opacity-20`} />
-                      <p className="text-2xl font-bold text-brand-primary dark:text-white">{stat.value}</p>
-                      <p className="text-sm text-brand-muted">{stat.label}</p>
+                  <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-4">
+                    <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-500/20 rounded-lg mb-3 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
                     </div>
-                  ))}
+                    <p className="text-2xl font-bold text-brand-primary dark:text-white">156</p>
+                    <p className="text-sm text-brand-muted">Tasks Completed</p>
+                  </div>
+                  <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-4">
+                    <div className="w-10 h-10 bg-amber-100 dark:bg-amber-500/20 rounded-lg mb-3 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-2xl font-bold text-brand-primary dark:text-white">42</p>
+                    <p className="text-sm text-brand-muted">Tasks Pending</p>
+                  </div>
+                  <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-4">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-500/20 rounded-lg mb-3 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                    </div>
+                    <p className="text-2xl font-bold text-brand-primary dark:text-white">89.5%</p>
+                    <p className="text-sm text-brand-muted">Performance</p>
+                  </div>
+                  <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-4">
+                    <div className="w-10 h-10 bg-violet-100 dark:bg-violet-500/20 rounded-lg mb-3 flex items-center justify-center text-violet-600 dark:text-violet-400">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-2xl font-bold text-brand-primary dark:text-white">24</p>
+                    <p className="text-sm text-brand-muted">Team Members</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -120,7 +144,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/register">
-                <Button size="lg" className="bg-white text-brand-primary hover:bg-white/90 w-full sm:w-auto">
+                <Button size="lg" variant="ghost" className="bg-white text-brand-primary hover:bg-white/90 w-full sm:w-auto">
                   Start Free Trial
                 </Button>
               </Link>
