@@ -21,7 +21,7 @@ export default function HomePage() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-primary dark:text-white leading-tight">
               Streamline Your
-              <span className="block gradient-brand bg-clip-text text-transparent">Workflow Management</span>
+              <span className="block gradient-text">Workflow Management</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-brand-muted max-w-2xl mx-auto">
               {companyInfo.description}

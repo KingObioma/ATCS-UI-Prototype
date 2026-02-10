@@ -119,6 +119,21 @@ button {
   background: linear-gradient(135deg, #272757 0%, #505081 100%);
 }
 
+/* Gradient text - visible in both light and dark */
+.gradient-text {
+  background: linear-gradient(135deg, #0F0E47 0%, #272757 50%, #505081 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #8686AC 0%, #A5A5D6 50%, #C4C4F0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Glass effect */
 .glass {
   backdrop-filter: blur(10px);
