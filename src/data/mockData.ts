@@ -385,6 +385,50 @@ export const departments = [
 export const statusOptions = ['All Status', 'Active', 'On Leave', 'Inactive']
 export const taskStatusOptions = ['All Status', 'Completed', 'Pending', 'Overdue']
 
+// Notifications data
+export const notifications = [
+  {
+    id: 'notif-001',
+    title: 'Task Overdue',
+    message: 'Campaign Performance Analysis is past its deadline',
+    time: '5 min ago',
+    read: false,
+    type: 'alert' as const,
+  },
+  {
+    id: 'notif-002',
+    title: 'Task Completed',
+    message: 'Sarah Johnson completed Authentication System Refactor',
+    time: '22 min ago',
+    read: false,
+    type: 'success' as const,
+  },
+  {
+    id: 'notif-003',
+    title: 'New Comment',
+    message: 'Michael Chen commented on API Integration Testing',
+    time: '1 hr ago',
+    read: false,
+    type: 'info' as const,
+  },
+  {
+    id: 'notif-004',
+    title: 'Performance Review',
+    message: 'Q4 performance reviews are ready for approval',
+    time: '2 hrs ago',
+    read: true,
+    type: 'info' as const,
+  },
+  {
+    id: 'notif-005',
+    title: 'System Update',
+    message: 'ATCS v2.5.0 has been deployed successfully',
+    time: '5 hrs ago',
+    read: true,
+    type: 'success' as const,
+  },
+]
+
 // Company info for public pages
 export const companyInfo = {
   name: 'ATCS',
