@@ -12,8 +12,8 @@ export default function LoginPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'admin@atcs.io',
+    password: 'admin123',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
