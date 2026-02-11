@@ -144,7 +144,6 @@ export default function DashboardPage() {
               <TableRow>
                 <TableHead>Task</TableHead>
                 <TableHead>Assigned To</TableHead>
-                <TableHead>Assigned From</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Deadline</TableHead>
               </TableRow>
