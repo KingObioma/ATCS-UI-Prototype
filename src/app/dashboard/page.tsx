@@ -120,7 +120,7 @@ export default function DashboardPage() {
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-brand-primary dark:text-white">Task Distribution</h2>
             <p className="text-sm text-brand-muted">Current status breakdown</p>
-            <p className="text-sm text">Current</p>
+            <p className="text-sm text-brand-muted">Current</p>
           </div>
           <DonutChart
             data={taskStatusDistribution}
