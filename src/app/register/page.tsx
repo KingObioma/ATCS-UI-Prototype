@@ -86,6 +86,7 @@ export default function RegisterPage() {
               <div className="flex items-start gap-2">
                 <input
                   type="checkbox"
+                  type="checkbox"
                   required
                   className="w-4 h-4 mt-0.5 text-brand-secondary border-brand-muted/30 rounded focus:ring-brand-accent"
                 />
