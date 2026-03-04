@@ -24,7 +24,7 @@ export default function ReportsPage() {
   const appraisalDonutData = appraisalDistribution.map((item, index) => ({
     name: item.range,
     value: item.count,
-    color: ['#0F0E47', '#272757', '#505081', '#8686AC', '#BDBDBD'][index],
+    color: ['#0F0E47', '#272557', '#505081', '#8686AC', '#BDBDBD'][index],
   }))
 
   return (
