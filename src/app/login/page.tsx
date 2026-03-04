@@ -24,7 +24,7 @@ export default function LoginPage() {
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Redirect to dashboard
-    router.push('/dashboard')
+    router.push('/dash-board')
   }
 
   return (
