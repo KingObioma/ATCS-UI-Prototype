@@ -14,7 +14,7 @@ export default function RegisterPage() {
   const [formData, setFormData] = useState({
     name: 'John Doe',
     email: 'john@atcs.io',
-    password: 'admin143',
+    password: 'admin123',
     confirmPassword: 'admin123',
   })
 
