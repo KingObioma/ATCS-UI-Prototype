@@ -12,7 +12,7 @@ export default function LoginPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
-    email: 'admin@atcs.ng',
+    email: 'admin@atcs.io',
     password: 'admin123',
   })
 
