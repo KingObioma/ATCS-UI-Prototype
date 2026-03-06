@@ -24,7 +24,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
         {/* Page content */}
         <main className="p-4 lg:p-6">
-          {parent}
+          {children}
         </main>
       </div>
     </div>
