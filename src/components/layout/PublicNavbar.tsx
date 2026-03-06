@@ -103,7 +103,7 @@ export function PublicNavbar() {
                   <Button variant="outline" size="sm" className="w-full">Sign In</Button>
                 </Link>
                 <Link href="/register" className="flex-1">
-                  <Button variant="primary" size="sm" className="w-full">Sign Up</Button>
+                  <Button variant="primary" size="sm" className="w-full">Create Account</Button>
                 </Link>
               </div>
             </div>
