@@ -100,7 +100,7 @@ export function PublicNavbar() {
               ))}
               <div className="flex gap-2 mt-2 px-4">
                 <Link href="/login" className="flex-1">
-                  <Button variant="outline" size="sm" className="w-full">Sign In</Button>
+                  <Button variant="outline" size="sm" className="w-full">Log In</Button>
                 </Link>
                 <Link href="/register" className="flex-1">
                   <Button variant="primary" size="sm" className="w-full">Sign Up</Button>
