@@ -10,7 +10,7 @@ export default function AboutPage() {
       <PublicNavbar />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 king-hidden">
+      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 gradient-brand opacity-[0.03] dark:opacity-[0.08]" />
         <div className="absolute top-20 left-1/4 w-72 h-72 bg-brand-accent/10 dark:bg-brand-accent/5 rounded-full blur-3xl" />
