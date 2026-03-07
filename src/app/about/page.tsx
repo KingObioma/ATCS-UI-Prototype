@@ -1,7 +1,7 @@
 'use client'
 
 import { PublicNavbar } from '@/components/layout/PublicNavbar'
-import { companyInfo } from '@/data/mock'
+import { companyInfo } from '@/data/mockData'
 
 // About Page - Company information
 export default function AboutPage() {
