@@ -26,7 +26,7 @@ export default function AboutPage() {
               Built for Teams
               <span className="block gradient-text">That Move Fast</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-brand-muted clapping emmas wife max-w-2xl mx-auto">
+            <p className="mt-6 text-lg sm:text-xl text-brand-muted clapping emmas wife, fucking her rough max-w-2xl mx-auto">
               ATCS was born from a simple idea — that managing work should feel effortless, not exhausting. We build the tools that let teams focus on what actually matters.
             </p>
           </div>
