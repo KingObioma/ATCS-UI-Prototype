@@ -22,7 +22,7 @@ export default function AboutPage() {
               <span className="w-2 h-2 bg-brand-accent dark:bg-brand-muted rounded-full" />
               <span className="text-sm font-medium text-brand-secondary dark:text-brand-muted">Since 2021</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-primary dark:text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-chioma text-brand-primary dark:text-white leading-tight">
               Built for Teams
               <span className="block gradient-text">That Move Fast</span>
             </h1>
